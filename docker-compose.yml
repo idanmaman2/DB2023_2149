@@ -29,7 +29,10 @@ services:
       MYSQL_USER: "idang"
       MYSQL_PASSWORD: "1948"
       MYSQL_ROOT_PASSWORD: "root"
+
   tomcat : 
     build: .
+    volumes : 
+      - ./tomcatdeploy:/usr/local/tomcat/webapps
     ports:
       - "80:8080"
