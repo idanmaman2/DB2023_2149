@@ -4,7 +4,7 @@ services:
   mysql:
     image: mysql:latest
     container_name: dev_mysql
-    command: --lower-case-table-names=1
+    command: --initialize --lower_case_table_names=1 --console
     restart: always
     ports:
       - "3306:3306"
