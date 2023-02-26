@@ -38,7 +38,3 @@ services:
     ports:
       - "8080:8080"
 
-  react:
-    build: ./reactdeploy/
-    ports : 
-      - 80:3000
