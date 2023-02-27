@@ -45,7 +45,7 @@ services:
       NODE_ENV: production
     volumes:
       - ./frontend/cinema-town/:/usr/src/app/
-    command:  sh -c "cd /usr/src/app/ && yarn build  && yarn global add serve && serve -s build"
+    command:  sh -c "cd /usr/src/app/ && yarn install --only=production && yarn build  && yarn global add serve && serve -s build"
     expose: [3000]
     ports:
       - 80:3000
