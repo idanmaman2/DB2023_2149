@@ -4,7 +4,7 @@ services:
 
   mysql:
     image: mysql:latest
-    container_name: dev_mysql
+    container_name: "db2023_dev_mysql"
     command: --lower_case_table_names=1
     restart: always
     ports:
@@ -20,7 +20,7 @@ services:
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    container_name: "dev_phpmyadmin"
+    container_name: "db2023_dev_phpmyadmin"
     restart: always
     ports:
       - 9111:80
@@ -33,8 +33,23 @@ services:
 
   tomcat : 
     build: ./tomcatdeploy
+    container_name: "db2023_tomcat_springboot"
     volumes : 
       - ./tomcatdeploy:/usr/local/tomcat/webapps
     ports:
       - "8080:8080"
+  
+  frontend:
+    image: node:alpine
+    environment:
+      NODE_ENV: production
+    volumes:
+      - ./frontend/cinema-town/:/usr/src/app/
+    command:  sh -c "cd /usr/src/app/ && yarn build  && yarn global add serve && serve -s build"
+    expose: [3000]
+    ports:
+      - 80:3000
+
+
+    
 
