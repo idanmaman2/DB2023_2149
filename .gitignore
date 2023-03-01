@@ -6,6 +6,7 @@ bin
 docker/docker
 .*.swp
 a.out
+scripts/populate/api.key
 *.orig
 build_src
 .flymake*
