@@ -19,11 +19,14 @@ services:
       MYSQL_ROOT_PASSWORD: "root"
 
   phpmyadmin:
-    image: phpmyadmin/phpmyadmin
+    image: phpmyadmin/phpmyadmin:latest
     container_name: "db2023_dev_phpmyadmin"
     restart: always
     ports:
       - 9111:80
+    volumes:
+      - ./phpmyadmin/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php
+      - ./phpmyadmin/output/:/home/
     environment:
       PMA_HOST: mysql
       PMA_PORT: 3306
