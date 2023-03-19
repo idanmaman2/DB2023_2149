@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+
+  mysql:
+    image: mysql:latest
+    container_name: "db2023_dev_mysql"
+    command: --lower_case_table_names=1
+    restart: always
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./data/db:/var/lib/mysql
+      - ./dump:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_DATABASE: "db"
+      MYSQL_USER: "idang"
+      MYSQL_PASSWORD: "1948"
+      MYSQL_ROOT_PASSWORD: "root"
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: "db2023_dev_phpmyadmin"
+    restart: always
+    ports:
+      - 9111:80
+    volumes:
+      - ./phpmyadmin/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php
+      - ./phpmyadmin/output/:/home/
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      MYSQL_USER: "idang"
+      MYSQL_PASSWORD: "1948"
+      MYSQL_ROOT_PASSWORD: "root"
+
+
+
