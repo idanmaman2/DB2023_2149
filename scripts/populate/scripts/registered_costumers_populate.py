@@ -20,7 +20,7 @@ with open("../data/populate_passwords/passwords.txt",'w') as passwords:
                 id = str(random.randint(0,999999999)).rjust(9,'0')
                 cs = Costumer(fname , lname  , email , binascii.b2a_hex(hashlib.md5(password.encode('ascii')).digest()).decode() , id )                
                 try:
-                    print(tuple(cs))
+                    print(cs)
                     mycursor.execute("""INSERT INTO `registered_costumers`(`first_name`, `last_name`, `id`, `email`, `password`) 
                                         VALUES (%s,%s,%s,%s,%s)""" , tuple(cs))
                     mydb.commit()

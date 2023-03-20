@@ -8,7 +8,7 @@ from itertools import cycle
 from objects.movie import Movie 
 from objects.genere import Genere
 apikey= None #create file in the keys directory named api.key with your own api key from omdbapi - just enter google mail...
-
+# HIGH QUALITY :  https://www.google.com/search?as_st=y&tbm=isch&as_q=puss+in+boots+the+last+wish+poster&as_epq=&as_oq=&as_eq=&cr=countryUS&as_sitesearch=&tbs=ctr:countryUS,isz:lt,islt:svga,itp:photo,iar:t,ift:png#imgrc=PLynD_nPSNorpM
 def fetch_trailer(movie,year): 
   page : str  = requests.get(f"https://www.youtube.com/results?search_query={movie.strip().replace(' ','+')}+{year}+trailer"
                              ,headers={
@@ -65,7 +65,7 @@ with open("../data/titles.json" , 'r') as file :
                     description=res["Plot"],
                     duration=datetime.timedelta(minutes=int(res["Runtime"].split(" ")[0])  ) ,
                     reales_date=date,
-                    poster={ "images" : [res["Poster"]] + fetch_posters(res["Title"],date.strftime( '%Y')) } , 
+                    poster={ "imagesHigh" :  fetch_posters(res["Title"],date.strftime( '%Y')) , "imageLow" : [res["Poster"]] } , 
                     trailer = {"trailers" : list(fetch_trailer(res["Title"],date.strftime( '%Y')))} 
                     )
                
@@ -77,7 +77,7 @@ with open("../data/titles.json" , 'r') as file :
             if mv.rating : 
                 try: 
                     mycursor.execute("""
-                        INSERT INTO `movies` (`Name`, `rating`, `id`, `description`, `duration`, `reales_date`, `poster_images`, `trailer`) VALUES (%s,%s,%s,%s,%s,%s,%s,%s);""" , 
+                        INSERT INTO `movie` (`Name`, `rating`, `id`, `description`, `duration`, `reales_date`, `poster_images`, `trailer`) VALUES (%s,%s,%s,%s,%s,%s,%s,%s);""" , 
                         tuple(mv)
                         )
                     mydb.commit()

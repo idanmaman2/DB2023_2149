@@ -1,0 +1,85 @@
+{
+	"info": {
+		"_postman_id": "84a5ecb1-95a3-4165-b7f4-a824b4cd6f90",
+		"name": "Movies",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23604349"
+	},
+	"item": [
+		{
+			"name": "queries",
+			"item": [
+				{
+					"name": "findAllMovies",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query findAllMovies {\n    findAllMovies {\n        id\n        name\n        description\n        rating\n        poster_images\n        trailer\n        reales_date\n        duration\n    }\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findMoviesByRating",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query findMoviesByRating ($ratings: [String!]!) {\n    findMoviesByRating (ratings: $ratings) {\n        id\n        name\n        description\n        rating\n        poster_images\n        trailer\n        reales_date\n        duration\n    }\n}",
+								"variables": "{\n  \"ratings\": [\n    \"\"\n  ]\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findMovieById",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query findMovieById ($id: Int!) {\n    findMovieById (id: $id) {\n        id\n        name\n        description\n        rating\n        poster_images\n        trailer\n        reales_date\n        duration\n    }\n}",
+								"variables": "{\n  \"id\": 0\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://127.0.0.1:8080/graphql",
+			"type": "any"
+		}
+	]
+}
