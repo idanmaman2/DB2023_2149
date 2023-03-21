@@ -3,7 +3,6 @@ from enum import Enum
 class Transaction : 
     class PayingMethods(Enum): 
         VISA = "VISA"
-        DEBIT_CARD = 'DEBIT_CARD'
         CASH = 'CASH'
         CUPON = 'CUPON'
     

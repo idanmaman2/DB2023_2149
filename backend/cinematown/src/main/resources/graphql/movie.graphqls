@@ -1,0 +1,14 @@
+type Movie {
+    id: ID!
+    name: String!
+    description: String!
+    rating: String!
+    poster_images: Object!
+    trailer: Object!
+    reales_date: String!
+    duration: String!
+    genres :[Genre!]
+}
+
+
+scalar Object

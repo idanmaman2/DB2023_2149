@@ -3,10 +3,13 @@ import requests
 import json 
 import datetime 
 import re 
+import traceback
 import requests 
+import time
 from itertools import cycle
 from objects.movie import Movie 
-from objects.genere import Genere
+from objects.genre import Genre
+from objects.genere_movie import GenereMovie
 apikey= None #create file in the keys directory named api.key with your own api key from omdbapi - just enter google mail...
 # HIGH QUALITY :  https://www.google.com/search?as_st=y&tbm=isch&as_q=puss+in+boots+the+last+wish+poster&as_epq=&as_oq=&as_eq=&cr=countryUS&as_sitesearch=&tbs=ctr:countryUS,isz:lt,islt:svga,itp:photo,iar:t,ift:png#imgrc=PLynD_nPSNorpM
 def fetch_trailer(movie,year): 
@@ -56,7 +59,7 @@ with open("../data/titles.json" , 'r') as file :
         res : dict = requests.get(f"https://www.omdbapi.com/?t={i}&apikey={apikey}").json()
         if res["Response"] == "True":
             mv : Movie  = None 
-            glist : list[Genere] = [] 
+            glist : list[Genre] = [] 
             try:
                 date : datetime = datetime.datetime.strptime(res["Released"], '%d %b %Y')
                 mv = Movie(
@@ -83,8 +86,32 @@ with open("../data/titles.json" , 'r') as file :
                     mydb.commit()
                     mycursor.execute("SELECT LAST_INSERT_ID();")
                     mv_id  = mycursor.fetchone()
-                    glist.extend(map(Genere , res["Genre"].split(",") , cycle([ mv_id[0]])))
-                    mycursor.executemany("""INSERT INTO `movie_generes`(`mv_id`, `genre`) VALUES (%s,%s)""" ,
-                                         tuple(map(tuple,glist)))
-                except: 
-                    print(f"FAILED {mv.name}")
+                    glist.extend(map(Genre , res["Genre"].split(",") ))
+                    for gn in glist : 
+                        try : 
+                            mycursor.execute("""INSERT INTO `genre`(`id`, `name`) 
+                                                VALUES (%s,%s)""" , 
+                                                tuple(gn))
+                                                
+                            mydb.commit()
+                        except : 
+                            print("GENRE EXSITS...(IT IS NORMAL WARNNING)")
+                    
+                    gidlist = [] 
+                    for gn in glist : 
+                        mycursor.execute(f"SELECT id FROM `genre` WHERE `genre`.name = '{gn.name}'")
+                        id = mycursor.fetchone()
+                        print(id,gn.name)
+                        gidlist.append(id[0])
+                        
+                        
+                    gnmvlist = [] 
+                    gnmvlist.extend(map(GenereMovie ,gidlist  , cycle([ mv_id[0]])))
+                    
+                    
+                    mycursor.executemany("""INSERT INTO `movie_genre`(`movie_id`, `genre_id`) VALUES (%s,%s)""" ,
+                                         tuple(map(tuple,gnmvlist)))
+                        
+                except Exception as e: 
+                    print(f"FAILED {mv.name}  ::: {e}")
+                    print(traceback.format_exc())

@@ -1,0 +1,8 @@
+type Query {
+    findAllMovies: [Movie!]
+    findMoviesByRating(ratings:[String!]!): [Movie!]
+    findMovieById(id:Int!):Movie
+    findGenreById(id:Int!):Genre
+    findMoviesByGenresOR(genres:[String]!):[Movie!]
+    findMoviesByGenresAND(genres:[String]!):[Movie!]
+}

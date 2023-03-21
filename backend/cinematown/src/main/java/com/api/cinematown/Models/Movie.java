@@ -1,15 +1,14 @@
 package com.api.cinematown.Models;
 
 import com.fasterxml.jackson.annotation.JsonValue;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import org.springframework.boot.json.JsonParserFactory;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 @Entity
 public class Movie  {
@@ -30,6 +29,23 @@ public class Movie  {
 
     public Time duration ;
 
+
+
+    @ManyToMany
+    @JoinTable(
+            name = "movie_genre",
+            joinColumns = @JoinColumn(name = "movie_id"),
+            inverseJoinColumns = @JoinColumn(name = "genre_id"))
+    Set<Genre> genres ;
+
+
+    @JsonValue
+    public Map<String, Object> getTrailer() {
+        return JsonParserFactory.getJsonParser().parseMap(this.trailer);
+    }
+
+
+    
     @JsonValue
     public Map<String, Object> getPoster_images() {
         return JsonParserFactory.getJsonParser().parseMap(this.poster_images);

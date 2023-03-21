@@ -3,11 +3,11 @@ import random
 import datetime
 SHCEDULES = 3000 
 THISWEEK = 300 
-mycursor.execute("SELECT id FROM `movies`;")
+mycursor.execute("SELECT id FROM `movie`;")
 movies =list(map(lambda mv : mv[0] ,mycursor.fetchall()))
 mycursor.execute("SELECT id FROM `theater_hall`;")
 theaters =list(map(lambda x : x[0],mycursor.fetchall()))
-mycursor.execute("""SELECT id FROM `movies` WHERE movies.reales_date > "2015-1-1";""")
+mycursor.execute("""SELECT id FROM `movie` WHERE movie.reales_date > "2015-1-1";""")
 movies2015 = list(map(lambda mv : mv[0] ,mycursor.fetchall()))
 for i in range(SHCEDULES):
     try : 
