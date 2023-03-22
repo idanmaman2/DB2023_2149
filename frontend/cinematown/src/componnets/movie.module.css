@@ -1,0 +1,43 @@
+.card {
+  height: 800px;
+  width: 400px;
+  position: relative;
+  transition: all 0.5s linear;
+  transform-style: preserve-3d;
+}
+
+.front,
+.back {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3em;
+  border-radius: 10px;
+  position: absolute;
+}
+
+.front {
+  background: linear-gradient(#08aeea, #2af598);
+  z-index: 2;
+  backface-visibility: hidden;
+}
+
+.back {
+  background: linear-gradient(#f8da61, #ff5acd);
+  z-index: 1;
+  /* Fricking stupid Safari!!!! */
+  backface-visibility: hidden;
+  transform: rotateY(180.00001deg);
+
+}
+
+.container:hover .card {
+  /* Fricking stupid Safari!!!! */
+  transform: rotateY(180.00001deg);
+}
+
+.container {
+  perspective: 1000px;
+}

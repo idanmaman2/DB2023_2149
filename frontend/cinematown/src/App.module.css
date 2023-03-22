@@ -1,0 +1,55 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  top:50%;
+}
+
+.center {
+  height: 500px;
+  width: 500px;
+  background-color: #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.link {
+  color: #b318f0;
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.logo {
+  animation: logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+  height: 50%;
+  margin: 10%;
+}
+.divcen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: black
+}
+
+.text {
+  margin-top: 0; /* Reset margin to remove any default spacing */
+  font-size: 100px;
+  color: #0E8388;;
+}
+
+.image {
+  animation: logo-spin infinite 20s linear;
+  max-width: 100%; /* Ensure the image doesn't exceed the width of its container */
+}
