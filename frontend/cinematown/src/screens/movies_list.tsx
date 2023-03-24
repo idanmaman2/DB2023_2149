@@ -6,7 +6,7 @@ import { Movie, MovieCard } from '../componnets/movie';
 
 import { createClient } from "@urql/core";
 
-export default function MoviesList(){
+export default function MoviesList() {
     var client: any = createClient({ url: `http://localhost:8080/graphql` });
     const [moviesState, moviesStateSet] = createSignal(null)
     const [movies] = createResource(() => client.query(`  
@@ -31,35 +31,32 @@ export default function MoviesList(){
     );
 
 
-return <div class="bg-mainBG">
-    <h1 class="text-3xl bg-[#1da1f2] font-bold underline">
-      Hello world!
-    </h1>
-    <Show
-      when={movies()}
-      fallback={
-        <div class={styles.divcen}>
-          <p class={styles.text}>loading CinemaTown...</p><br></br>
-          <img src={logo} class={styles.image}></img>
-        </div>
+    return <div class="bg-mainBG">
+        <Show
+            when={movies()}
+            fallback={
+                <div class={styles.divcen}>
+                    <p class={styles.text}>loading CinemaTown...</p><br></br>
+                    <img src={logo} class={styles.image}></img>
+                </div>
 
-      }>
-      <div>
-        <div class="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-          <For each={movies().reverse()}>
-            {
-              (cat: Movie, i) => {
-                return <button onClick={()=>{console.log(cat.name)}}><MovieCard movie={cat}></MovieCard></button>
-              }
-            }
+            }>
+            <div>
+                <div class="grid grid-cols-1 ">
+                    <For each={movies().reverse()}>
+                        {
+                            (cat: Movie, i) => {
+                                return <button onClick={() => { location.replace(`/movie/${cat.id}`) }}> <div class='w-[400px] h-[800px] '><MovieCard movie={cat}></MovieCard></div></button>
+                            }
+                        }
 
 
-          </For>
-        </div>
+                    </For>
+                </div>
 
-      </div>
-    </Show>
-  </div>;
+            </div>
+        </Show>
+    </div>;
 
 
 

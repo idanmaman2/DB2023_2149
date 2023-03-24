@@ -12,6 +12,17 @@ from objects.genre import Genre
 from objects.genere_movie import GenereMovie
 apikey= None #create file in the keys directory named api.key with your own api key from omdbapi - just enter google mail...
 # HIGH QUALITY :  https://www.google.com/search?as_st=y&tbm=isch&as_q=puss+in+boots+the+last+wish+poster&as_epq=&as_oq=&as_eq=&cr=countryUS&as_sitesearch=&tbs=ctr:countryUS,isz:lt,islt:svga,itp:photo,iar:t,ift:png#imgrc=PLynD_nPSNorpM
+
+def uniqueInOrder(ls : iter )->list: 
+    """I didnt use set cause I didnt want to change the order of them """
+    uniqeTrailers = []
+    for tr in ls:
+        if tr not in uniqeTrailers : 
+            uniqeTrailers.append(tr)
+        if len(uniqeTrailers) == 3 : 
+            break 
+    return uniqeTrailers
+
 def fetch_trailer(movie,year): 
   page : str  = requests.get(f"https://www.youtube.com/results?search_query={movie.strip().replace(' ','+')}+{year}+trailer"
                              ,headers={
@@ -20,13 +31,7 @@ def fetch_trailer(movie,year):
                              ).text
   res : list[str]=  re.findall('''\"videoId\"\:\"([\\w]{11})\"''',page);
   trailers = map(lambda id : "https://www.youtube.com/embed/%s"%id , res)
-  uniqeTrailers = []
-  for tr in trailers:#I didnt use set cause I didnt want to change the order of them 
-    if tr not in uniqeTrailers : 
-        uniqeTrailers.append(tr)
-    if len(uniqeTrailers) == 3 : 
-        break 
-  return uniqeTrailers
+  return uniqueInOrder(trailers)
 
 def fetch_posters(movie,year): 
     page:str = requests.get(f"https://www.google.com/search?q={movie.strip().replace(' ','%20')}%20{year}%20the%20movie&tbm=isch&hl=iw" ,
@@ -34,7 +39,7 @@ def fetch_posters(movie,year):
                                 "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36"
                             }).text
     linksHash  = re.finditer("data-tbnid=\"([\\w]{14})\"" , page )
-    links = set()
+    links = list()
     for refind in linksHash :
         try:
             hash,start= refind.group(1) , refind.span()[0]+len('data-tbnid=\"')
@@ -43,12 +48,13 @@ def fetch_posters(movie,year):
             start = page.index("[" , start) + 1 
             start = page.index("[" , start) + 2 
             end = page.index('"',start)
-            links.add(page[start : end])
+            if page[start : end] not in links : 
+                links.append(page[start : end])
         except : 
             ...
         if len(links) == 10 : 
             break 
-    return list(links)
+    return links
 
 with open("../keys/api.key",'r') as file : 
     apikey :str = file.read() 

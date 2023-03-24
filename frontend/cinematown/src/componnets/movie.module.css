@@ -41,3 +41,6 @@
 .container {
   perspective: 1000px;
 }
+.safari_scroll{
+  -webkit-overflow-scrolling: touch
+}
