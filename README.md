@@ -1,5 +1,5 @@
 # CinemaTown 
-
+# Currently in progress (Will be finished soon...)
 
 <img width="1470" alt="Screenshot 2023-04-17 at 21 23 11" src="https://user-images.githubusercontent.com/90776557/232594583-197a58f1-7edc-4ceb-81ad-4e58b531249e.png">
 
