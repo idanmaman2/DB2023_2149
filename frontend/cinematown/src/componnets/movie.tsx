@@ -8,8 +8,8 @@ export interface Movie {
   id: bigint
   description: string
   rating: string
-  poster_images: any
-  trailer: any
+  poster_images: string
+  trailer: string
   reales_date: string
   duration: string
   genres: [Genre]
@@ -24,7 +24,7 @@ export function MovieCard(props: { movie: Movie }) {
         <div class={styles.card}>
           <div class={styles.front}>
             <div class="m rounded-lg  bg-mainColor  w-[100%] h-[100%]  border-mainColor border-8 relative">
-              <img src={movie.poster_images["imageLow"][0]} alt="Poster Image" class=" w-[100%] h-[80%] object-fill  group-hover:opacity-75" />
+              <img src={movie.poster_images} alt="Poster Image" class=" w-[100%] h-[80%] object-fill  group-hover:opacity-75" />
               <div class="h-20%">
                 <h3 class="mt-1 text-4xl  text-gray-900">{movie.name}</h3>
                 <div class=" absolute bottom-[-10px] ">

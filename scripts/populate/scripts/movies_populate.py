@@ -4,8 +4,6 @@ import json
 import datetime 
 import re 
 import traceback
-import requests 
-import time
 from itertools import cycle
 from objects.movie import Movie 
 from objects.genre import Genre
@@ -74,8 +72,8 @@ with open("../data/titles.json" , 'r') as file :
                     description=res["Plot"],
                     duration=datetime.timedelta(minutes=int(res["Runtime"].split(" ")[0])  ) ,
                     reales_date=date,
-                    poster={ "imagesHigh" :  fetch_posters(res["Title"],date.strftime( '%Y')) , "imageLow" : [res["Poster"]] } , 
-                    trailer = {"trailers" : list(fetch_trailer(res["Title"],date.strftime( '%Y')))} 
+                    poster = fetch_posters(res["Title"],date.strftime( '%Y'))[0] , 
+                    trailer = list(fetch_trailer(res["Title"],date.strftime( '%Y'))) [0]
                     )
                
             except : 

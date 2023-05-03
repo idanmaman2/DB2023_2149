@@ -10,7 +10,9 @@ import java.util.List;
 @Repository
 public interface MovieRepository extends JpaRepository<Movie,Long> {
 
-    @Query(value = "SELECT * FROM movie WHERE movie.rating in  ?1 ",nativeQuery = true)
+    @Query(value = "SELECT * FROM movie ORDER BY movie.reales_date DESC ",nativeQuery = true)
+    List<Movie> findByreales_dateDesc();
+    @Query(value = "SELECT * FROM movie WHERE movie.rating in  ?1 ORDER",nativeQuery = true)
     List<Movie> findMoviesByRating(List<String> rating);
 
 

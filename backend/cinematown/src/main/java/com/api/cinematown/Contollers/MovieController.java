@@ -3,6 +3,7 @@ package com.api.cinematown.Contollers;
 import com.api.cinematown.Models.Movie;
 import com.api.cinematown.Repositories.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.SchemaMapping;
 import org.springframework.stereotype.Controller;
@@ -20,7 +21,7 @@ public class MovieController {
 
     @SchemaMapping(typeName ="Query" , value = "findAllMovies")
     public List<Movie> findAllMovies() {
-        return movieRepository.findAll();
+        return movieRepository.findByreales_dateDesc();
     }
     @SchemaMapping(typeName = "Query" , value = "findMoviesByRating")
     public List<Movie> findMoviesByRating(@Argument List<String> ratings) {

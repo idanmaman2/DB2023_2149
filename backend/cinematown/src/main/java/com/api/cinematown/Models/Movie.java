@@ -39,15 +39,15 @@ public class Movie  {
     Set<Genre> genres ;
 
 
-    @JsonValue
-    public Map<String, Object> getTrailer() {
-        return JsonParserFactory.getJsonParser().parseMap(this.trailer);
-    }
+    //@JsonValue
+    //public Map<String, Object> getTrailer() {
+        //return JsonParserFactory.getJsonParser().parseMap(this.trailer);
+    //}
 
 
     
-    @JsonValue
-    public Map<String, Object> getPoster_images() {
-        return JsonParserFactory.getJsonParser().parseMap(this.poster_images);
-    }
+   // @JsonValue
+    //public Map<String, Object> getPoster_images() {
+      //  return JsonParserFactory.getJsonParser().parseMap(this.poster_images);
+    //}
 }

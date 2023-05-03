@@ -1,0 +1,4 @@
+docker compose -f docker-compose.dev.yml up &  
+./frontend/cinematown/up.dev & 
+./backend/cinematown/up.dev & 
+echo "Completed" 

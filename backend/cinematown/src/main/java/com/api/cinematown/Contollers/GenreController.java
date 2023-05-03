@@ -1,20 +1,14 @@
 package com.api.cinematown.Contollers;
-
 import com.api.cinematown.Models.Genre;
 import com.api.cinematown.Models.Movie;
 import com.api.cinematown.Repositories.GenreRepository;
-import com.api.cinematown.Repositories.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.SchemaMapping;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.client.HttpStatusCodeException;
-
-import java.net.http.HttpResponse;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -28,10 +22,6 @@ public class GenreController {
     @SchemaMapping(typeName ="Query" , value = "findGenreById")
     public Genre GenrefindAllMovies(@Argument long id ) {
         return genreRepository.findById(id).get();
-
-
-
-
     }
 
     @SchemaMapping(typeName ="Query" , value = "findMoviesByGenresOR")

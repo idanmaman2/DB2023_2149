@@ -7,23 +7,21 @@ export interface Genre {
 
 export function GenreCard(props: { genre: Genre }) {
 
-    function genereColorMapping(str:string):string{
-        // format  - # - 1d : r  - a1  : g  - f2 : b 
-        let sum:number   =0 ; 
-        for(let x  of str){
-            let val = x.charCodeAt(0) ; 
-            sum+=val ; 
+    function genereColorMapping(str: string): string {
+        let sum: number = 0;
+        for (let x in str as any) {
+            sum += str.charCodeAt(x as any);
         }
-        let r: number  = 0x1d; 
-        let g:number = 0xa1; 
-        let b:number =0xf2 ; 
-        console.log(`#${r.toString(16).padStart(2,'0')}${g.toString(16).padStart(2,'0')}${b.toString(16).padStart(2,'0')}`)
-        return `#${r.toString(16).padStart(2,'0')}${g.toString(16).padStart(2,'0')}${b.toString(16).padStart(2,'0')}`
-      }
+        // formula : ( (sum +10 )  * prime number in index(2i))%256
+        let r: number = ((sum + 10) * 2) % 256;
+        let g: number = ((sum + 10) * 5) % 256;
+        let b: number = ((sum + 10) * 11) % 256;
+        return `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`
+    }
 
-      
-    return <div class={`bg-black  border-r-4 border-[${genereColorMapping(props.genre.name)}]`}>
-            <p class="text-[40%] text-white">{props.genre.name}</p>
+
+    return <div class="bg-black  border-r-4" style={`border-color:${genereColorMapping(props.genre.name)}`}>
+        <p class="text-[40%] text-white">{props.genre.name}</p>
     </div>;
 
 

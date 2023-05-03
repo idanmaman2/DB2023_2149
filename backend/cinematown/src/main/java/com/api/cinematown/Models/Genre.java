@@ -3,6 +3,7 @@ package com.api.cinematown.Models;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OrderBy;
 
 import java.util.Set;
 

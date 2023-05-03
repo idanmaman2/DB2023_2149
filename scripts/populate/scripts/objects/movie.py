@@ -35,8 +35,8 @@ class Movie:
             self.description ,
             self.duration , 
             self.reales_date.strftime("%Y-%m-%d") , 
-            json.dumps(self.poster) , 
-            json.dumps(self.trailer)
+            self.poster , 
+            self.trailer
         ))
         
 
