@@ -9,3 +9,4 @@ import vip_hall_populate
 import broken_seats_populate
 import schedueled_populate
 import transactions_populate
+# ADD NEW TABLES

@@ -2,12 +2,12 @@ from dataclasses import dataclass
 from typing import List 
 from enum import Enum
 @dataclass
-class maintenace_workers:
+class MaintenaceWorkers:
     class Roles(Enum):
-        SIMPLE_WORKER =0 
-        PRIVILLEGED_WORKER = 1 
-        MANAGER = 2 
+        SIMPLE_WORKER ="Simple_Worker"
+        PRIVILLEGED_WORKER = "Privillged_Worker"
+        MANAGER = "Manager"
     id : int 
     role : Roles
     def __iter__(self): 
-        return iter((self.id , self.role.name))
+        return iter((self.id , self.role.value))
