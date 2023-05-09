@@ -1,24 +1,14 @@
 
 from datetime import datetime
-
+from dataclasses import dataclass
+from typing import List 
+@dataclass
 class Schedule : 
-
-
-    def __init__(self , mv_id : int , theater_hall_id : int , time :datetime , is3d : bool , id : int = None  ) -> None:
-        self.mv_id = mv_id
-        self.theater_hall_id = theater_hall_id  
-        self.time = time 
-        self.is3d = is3d 
-        self.id = id 
-    def __str__(self): 
-        return f"""
-        {self.mv_id} => mv_id
-        {self.theater_hall_id} => theater_hall_id  
-        {self.time} => time 
-        {self.is3d} => is3d 
-        {self.id} => id 
-            """
-
+    mv_id : int 
+    theater_hall_id : int  
+    time : datetime 
+    is3d :  bool 
+    id : int 
     def __iter__(self)->iter: 
         """(`id`, `mv_id`, `theater_hall_id`, `time`, `3D`)"""
         return iter((self.id , 

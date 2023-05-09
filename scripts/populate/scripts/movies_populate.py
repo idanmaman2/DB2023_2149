@@ -67,17 +67,18 @@ with open("../data/titles.json" , 'r') as file :
             try:
                 date : datetime = datetime.datetime.strptime(res["Released"], '%d %b %Y')
                 mv = Movie(
-                    name=res["Title"],
-                    rating=Movie.Rating(res["Rated"]) ,
-                    description=res["Plot"],
-                    duration=datetime.timedelta(minutes=int(res["Runtime"].split(" ")[0])  ) ,
-                    reales_date=date,
-                    poster = fetch_posters(res["Title"],date.strftime( '%Y'))[0] , 
-                    trailer = list(fetch_trailer(res["Title"],date.strftime( '%Y'))) [0]
+                    res["Title"],
+                    Movie.Rating(res["Rated"]) ,
+                    res["Plot"],
+                    datetime.timedelta(minutes=int(res["Runtime"].split(" ")[0])  ) ,
+                    date,
+                     fetch_posters(res["Title"],date.strftime( '%Y'))[0] , 
+                     list(fetch_trailer(res["Title"],date.strftime( '%Y'))) [0] , 
+                     None
                     )
                
-            except : 
-                print(f"UNVALID MOVIE { '' if not mv else  mv.name}")
+            except Exception as e:  
+                print(f"UNVALID MOVIE { '' if not mv else  mv.name}  : {e}")
                 continue
     
             print(mv)

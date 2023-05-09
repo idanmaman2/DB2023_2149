@@ -1,16 +1,10 @@
-from .rtl import Rtl
-
+from dataclasses import dataclass
+from typing import List 
+@dataclass
 class Street : 
-    def __init__(self, name : str  , region : str  ,city : str ): 
-        self.name = name 
-        self.region = region 
-        self.city = city 
-    def __str__(self): 
-        return f"""
-        {Rtl(self.name)} => name 
-        {Rtl(self.region)} => region 
-        {Rtl(self.city)} => city 
-        """
+    name : str 
+    region : str 
+    city : str  
     def __iter__(self): 
         """( `street_name`, `city_name`, `region_name`, `id`) """
         return iter((

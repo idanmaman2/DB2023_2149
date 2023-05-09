@@ -1,12 +1,8 @@
+from dataclasses import dataclass
+@dataclass
 class Genre: 
-    def __init__(self, name , id=None ): 
-        self.name  = name 
-        self.id = id 
-    def __str__(self): 
-        return f"""
-            {self.name}  => name 
-            {self.id} => mv_id 
-        """
+    name : str 
+    id : int = None 
     def __iter__(self): 
         """(`id`, `name`)"""
         return iter((
