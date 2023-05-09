@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import List 
 @dataclass
-class part_supplies:
+class PartSupplies:
     part_id : int 
     quantity : int  
     cost : int 

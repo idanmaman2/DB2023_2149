@@ -1,0 +1,81 @@
+{
+    "jobs":[
+        {
+            "name": "Roof Repeair" , 
+            "description" : "Repairing the Roof of the Theather Hall  - There is a leak"
+
+        }, 
+        {
+            "name":"Screen Repair - Cable",
+            "description" : "Repairing the Screen Bad Cable of Audio"
+        }, 
+
+        {
+            "name":"Screen Repair - Speaker",
+            "description" : "Repairing the Screen - Bad Speaker "
+        } , 
+
+        {
+            "name":"Maintenance",
+            "description" : "Maintenance In the Theater Hall"
+        }
+        , 
+
+        {
+            "name":"Maintenance -  Speaker",
+            "description" : "Maintenance In the Theater Hall's Screen "
+        }
+        , 
+
+        {
+            "name":"Maintenance - Screen",
+            "description" : "Maintenance In the Theater Hall's Speaker"
+        }
+        , 
+
+        {
+            "name":"Maintenance - Chair",
+            "description" : "Maintenance In the Theater Hall's Chair"
+        }
+        , 
+
+        {
+            "name":"Cleaning",
+            "description" : "Deep Cleaning to The Theater Hall"
+        }
+        , 
+
+        {
+            "name":"Chair Repair",
+            "description" : "Repairing the Chair's stuffing"
+        }
+        , 
+
+        {
+            "name":"Chair Repair",
+            "description" : "Repairing the Chair's stuffing"
+        }
+        , 
+
+        {
+            "name":"Chair Repair",
+            "description" : "Repairing the Chair's stuffing"
+        }
+        , 
+
+        {
+            "name":"Carpet Cleaning",
+            "description" : "Cleaining Stam in the Carpet , with the pressute washer"
+        }
+
+    ]
+   
+
+
+
+
+    }
+
+
+
+

@@ -9,4 +9,7 @@ import vip_hall_populate
 import broken_seats_populate
 import schedueled_populate
 import transactions_populate
-# ADD NEW TABLES
+import part_populate 
+import maintnance_workes_populate 
+import maintenance_job_populate  
+import part_supplies_populate
