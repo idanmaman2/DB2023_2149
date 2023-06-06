@@ -6,6 +6,7 @@ import { Show, createSignal, For } from 'solid-js';
 import { Movie, MovieCard } from "../componnets/movie"
 import { client } from "../graphql/client";
 import { getMoviebyID } from "../graphql/movie";
+import ScheduleTable from "../componnets/shcedule_table";
 
 export default function MoviesPage() {
     const params = useParams();
@@ -18,7 +19,7 @@ export default function MoviesPage() {
         fallback={<p>Loading...</p>}>
         <div>
             <h1 class="flex justify-center items-center text-8xl font-mono m-5 mb-20">{movie()!.name}</h1>
-            <div class=" flex" >
+            <div class="flex" >
                 <div class="w-[30vw] h-[50vh] flex items-center justify-center ">
                     <img class="m-5 w-[30vw] h-[50vh] border-black border-[1vw] " src={movie()!.poster_images}></img>
                 </div>
@@ -27,7 +28,7 @@ export default function MoviesPage() {
                 </div>
             </div>
             <div class=" flex" >
-                <div class="w-[30vw] h-[50vh] flex items-start p-[4%]  justify-center ">
+                <div class="w-[30vw] h-[20vh] flex items-start p-[4%]  justify-center ">
                     <div>
                         <div class="flex text-2xl">
                             <h1>Realse Date:</h1>
@@ -48,7 +49,7 @@ export default function MoviesPage() {
                     </div>
 
                 </div>
-                <div class=" p-5 w-[70vw] h-[50vh]  flex">
+                <div class=" p-5 w-[70vw] h-[20vh]  flex items-center justify-center">
                     <div>
                         <h1 class="m-5 text-5xl font-bold">Description</h1>
                         <div class="m-5">
@@ -58,6 +59,12 @@ export default function MoviesPage() {
                     </div>
 
                 </div>
+            </div>
+            <div class="mt-[10vh] ml-[3vw] mr-[3vw]">
+            <h1 class="text-6xl m-5 font-extralight">
+                Buy Tickets
+            </h1>
+            <ScheduleTable schedules={movie()!.schedules}></ScheduleTable>
             </div>
         </div>
 

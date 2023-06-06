@@ -57,21 +57,28 @@ export  async function  getFindAllMoviesOld() : Promise<Movie[]> {
 export async function getMoviebyID(id : string) : Promise<Movie> {
   let querySTR : string = `  
   query{
-      findMovieById(id:${id}){
+    findMovieById(id:${id}){
+        id
+        name
+        description
+        rating
+        poster_images
+        trailer
+        reales_date
+        duration
+        schedules{
           id
-          name
-          description
-          rating
-          poster_images
-          trailer
-          reales_date
-          duration
-          genres{
-            name
-            id
+          time 
+          is_3D
+          theater_hall{
+            theater{
+              street_name
+            }
           }
-      }
+        }
+
     }
+  }
     `
  let resQ = await client.query(querySTR).toPromise() ; 
  return resQ.data.findMovieById  ; 

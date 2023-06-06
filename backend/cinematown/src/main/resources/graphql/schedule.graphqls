@@ -1,0 +1,10 @@
+type Schedule {
+    id: ID!
+    theater_hall: Theater_Hall!
+    movie: Movie!
+    time: String!
+    is_3D: Boolean!
+
+}
+
+

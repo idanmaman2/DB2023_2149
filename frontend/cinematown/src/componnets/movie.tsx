@@ -3,6 +3,7 @@ import { from } from "solid-js"
 import styles from "./movie.module.css"
 import { createSignal, Show, For } from "solid-js"
 import { Genre, GenreCard } from "./genre"
+import { Schedule } from "./shecudle"
 export interface Movie {
   name: string
   id: bigint
@@ -12,7 +13,8 @@ export interface Movie {
   trailer: string
   reales_date: string
   duration: string
-  genres: [Genre]
+  genres: Genre[]
+  schedules : Schedule[]
 }
 export function MovieCard(props: { movie: Movie }) {
 

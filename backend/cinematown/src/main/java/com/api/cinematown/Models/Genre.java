@@ -1,22 +1,18 @@
 package com.api.cinematown.Models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OrderBy;
+import jakarta.persistence.*;
 
 import java.util.Set;
 
 
 @Entity
+@Table(name = "genre")
 public class Genre {
 
     @Id
     public Long id ;
 
     public String name ;
-
-
     @ManyToMany(mappedBy = "genres")
     public Set<Movie> movies;
 }

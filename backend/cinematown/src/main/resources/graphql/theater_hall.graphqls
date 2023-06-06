@@ -1,5 +1,6 @@
 type Theater_Hall {
     theater: Theater!
     id: ID!
+    schedules:[Schedule!]
 }
 

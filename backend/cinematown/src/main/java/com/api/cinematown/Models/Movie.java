@@ -1,19 +1,15 @@
 package com.api.cinematown.Models;
 
-import com.fasterxml.jackson.annotation.JsonValue;
 import jakarta.persistence.*;
-import org.springframework.boot.json.JsonParserFactory;
-
 import java.sql.Date;
 import java.sql.Time;
-import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 @Entity
+@Table(name = "movie")
 public class Movie  {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
      public Long id ;
 
     public String name ;
@@ -37,6 +33,11 @@ public class Movie  {
             joinColumns = @JoinColumn(name = "movie_id"),
             inverseJoinColumns = @JoinColumn(name = "genre_id"))
     Set<Genre> genres ;
+
+
+    @OneToMany(mappedBy = "movie")
+    Set<Schedule> schedules;
+
 
 
     //@JsonValue
