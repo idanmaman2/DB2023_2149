@@ -21,16 +21,16 @@ export function MovieCard(props: { movie: Movie }) {
 
     <a href="#" class="group">
       <div class={styles.container}>
-        <div class={styles.card}>
+        <div  class={` h-[60vh] xl:w-[20vw]  lg:w-[30vw]  md:w-[40vw] sm:w-[90vw]  ${styles.card}`}>
           <div class={styles.front}>
             <div class="m rounded-lg  bg-mainColor  w-[100%] h-[100%]  border-mainColor border-8 relative">
               <img src={movie.poster_images} alt="Poster Image" class=" w-[100%] h-[80%] object-fill  group-hover:opacity-75" />
-              <div class="h-20%">
+              <div class="h-20% w-[100%]">
                 <h3 class="mt-1 text-4xl  text-gray-900">{movie.name}</h3>
-                <div class=" absolute bottom-[-10px] ">
-                  <div class="grid grid-cols-3  gap-y-0 gap-x-1">
-                    <For each={movie.genres}>{
-                      (gn, i) => <div class="w-[100px] h-[90px] mr-[10px] ml-[10px] mt-0 mb-[-50px] p-0`"><GenreCard genre={gn}></GenreCard></div>
+                <div class=" absolute bottom-[-10px] w-[100%]">
+                  <div class="grid grid-cols-3  gap-y-0 gap-x-5 w-[100%]">
+                    <For each={movie.genres.slice(0,6)}>{
+                      (gn, i) => <div class="w-[100%] h-[20%] mt-0 mb-[10%] ml-0 mr-0 p-0`"><GenreCard genre={gn}></GenreCard></div>
                     }</For>
                   </div>
                 </div>

@@ -1,0 +1,9 @@
+type Theater {
+    street_name: String!
+    city_name: String!
+    region_name: String!
+    lat : Float!
+    lon :Float!
+    id: ID!
+}
+

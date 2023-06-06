@@ -1,8 +1,11 @@
 type Query {
     findAllMovies: [Movie!]
+    findAllMoviesSortedByDateOld : [Movie!]
     findMoviesByRating(ratings:[String!]!): [Movie!]
     findMovieById(id:Int!):Movie
     findGenreById(id:Int!):Genre
     findMoviesByGenresOR(genres:[String]!):[Movie!]
     findMoviesByGenresAND(genres:[String]!):[Movie!]
+    findAllTheaters:[Theater!]
+    findTheaterById(id:Int!):Theater
 }

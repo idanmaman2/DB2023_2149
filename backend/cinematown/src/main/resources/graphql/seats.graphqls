@@ -1,0 +1,9 @@
+type Seats {
+    id: ID!
+    columnseat: Int!
+    rowseat: Int!
+    theaterHall: Theater_Hall!
+
+}
+
+

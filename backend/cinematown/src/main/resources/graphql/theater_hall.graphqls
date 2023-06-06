@@ -1,0 +1,5 @@
+type Theater_Hall {
+    theater: Theater!
+    id: ID!
+}
+

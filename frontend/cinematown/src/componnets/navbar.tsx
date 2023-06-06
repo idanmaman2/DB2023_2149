@@ -33,7 +33,9 @@ export function NavBar() {
           </a>
         </li>
         <li class="w-[150px] p-4 border-b-2 border-green-500 border-opacity-0 hover:border-opacity-100 hover:text-green-500 duration-200 cursor-pointer">
+        <a href="/" class="grid place-items-center h-[100%]">
           <img src={logo} class="w-[150px] h-[40px]`"></img>
+          </a>
         </li>
       </div>
 

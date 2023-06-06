@@ -20,7 +20,7 @@ export function GenreCard(props: { genre: Genre }) {
     }
 
 
-    return <div class="bg-black  border-r-4" style={`border-color:${genereColorMapping(props.genre.name)}`}>
+    return <div  class="bg-black w-full flex items-stretch overflow-hidden border-r-4" style={`border-color:${genereColorMapping(props.genre.name)}`}>
         <p class="text-[40%] text-white">{props.genre.name}</p>
     </div>;
 

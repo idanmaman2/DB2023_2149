@@ -8,6 +8,8 @@ import VipPage from './screens/vip_page';
 import SitesPage from './screens/sites_page';
 import LoginPage from './screens/login_page';
 import SignupPage from './screens/signup_page';
+import MoviesListOld from './screens/movies_list_old';
+import TheaterPage from './screens/theater_page';
 const MoviesList = lazy(() => import("./screens/movies_list"));
 const MoviePage = lazy(() => import("./screens/movie_page"));
 
@@ -19,7 +21,9 @@ const App: Component = () => {
     <NavBar></NavBar>
       <Routes>
         <Route path="/movie/:id" component={MoviePage} />
+        <Route path="/site/:id" component={TheaterPage} />
         <Route path="/" component={MoviesList} />
+        <Route path="/old" component={MoviesListOld} />
         <Route path="/vip" component={VipPage} />
         <Route path="/sites" component={SitesPage} />
         <Route path="/login" component={LoginPage} />

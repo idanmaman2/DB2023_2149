@@ -8,28 +8,11 @@ import { createClient } from "@urql/core";
 import { About } from './about';
 import SelectionInput from '../componnets/selection_input';
 import { client } from '../graphql/client';
+import getFindAllMovies from '../graphql/movie';
+import MoviesTable from '../componnets/movies_table';
 
 export default function MoviesList() {
-    const [movies] = createResource(() => client.query(`  
-      query{
-        findAllMovies{
-          id
-          name
-          description
-          rating
-          poster_images
-          trailer
-          reales_date
-          duration
-          genres{
-            name
-            id
-          }
-        }
-        }
-      `).toPromise().then((props: { data: any }) => props.data.findAllMovies
-    )
-    );
+    const [movies] = createResource(() =>getFindAllMovies());
 
 
     return <div >
@@ -83,19 +66,13 @@ export default function MoviesList() {
                     </button>
                 </div>
             </div>
-            <div id="s2">
-
-                <div class="grid grid-cols-1 gap-2">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
-                        {
-                            movies().map((x: Movie) => <button onClick={() => { location.replace(`/movie/${x.id}`) }} class="m-5"> <MovieCard movie={x}></MovieCard></button>)
-                        }
-
-                    </div>
-
-                </div>
+        
+            <MoviesTable movies={movies()}></MoviesTable>
+            <div class="m-10 flex  justify-center items-center w-full">
+            <a href='/old' class=" text-blue-800  font-light text-xl underline ">Watch a list of all the movies that we currently own</a>
 
             </div>
+
         </Show>
 
 

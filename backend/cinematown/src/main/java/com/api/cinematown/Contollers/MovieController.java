@@ -33,9 +33,12 @@ public class MovieController {
         Optional<Movie> mv =  movieRepository.findById((long)id);
         return mv.get() ;
 
-
     }
 
+    @SchemaMapping(typeName = "Query" , value = "findAllMoviesSortedByDateOld")
+    public List<Movie> findAllMoviesSortedByDateOld() {
+        return  movieRepository.getAllMoviesSortedByDateOld();
 
+    }
 
 }

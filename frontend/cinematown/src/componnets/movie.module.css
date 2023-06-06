@@ -1,6 +1,8 @@
 .card {
-  height: 800px;
-  width: 400px;
+  /*height: 60vh;
+  width: 20vw;
+  added that responsivly with taliwind. 
+  */
   position: relative;
   transition: all 0.5s linear;
   transform-style: preserve-3d;
