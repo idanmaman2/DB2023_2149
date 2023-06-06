@@ -1,6 +1,8 @@
 package com.api.cinematown.Models;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Where;
+import org.hibernate.annotations.OrderBy;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.Set;
@@ -36,7 +38,11 @@ public class Movie  {
 
 
     @OneToMany(mappedBy = "movie")
-    Set<Schedule> schedules;
+    @Where(clause = "DATEDIFF(time,NOW()) > 0 ")
+    @OrderBy(clause = "time ASC")
+    protected Set<Schedule> schedules;
+
+
 
 
 
