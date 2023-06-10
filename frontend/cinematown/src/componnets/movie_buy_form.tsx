@@ -19,14 +19,14 @@ export default function MovieBuyForm() {
     });
     let [movieIdState, movieSetIdState]: Signal<Number | null> = createSignal(null);
     let [hourState, hourSetState] = createResource(() => null);
-    let formatDateHHMM = (date: Date) => `${date.getHours()}:${date.getMinutes()}`;
+    let formatDateHHMM = (date: Date) => `${date.getHours().toString().padStart(2,"0")}:${date.getMinutes().toString().padStart(2,"0")}`;
     return <div>
-        <input class="m-5 border-red-600 border-4 w-[20vw]" type="date" value={dateState().toJSON().slice(0, 10)} onChange={(e) => {
+        <input class="m-5 border-red-600 border-4 w-[20vw]  h-[5vh] text-3xl" type="date" value={dateState().toJSON().slice(0, 10)} onChange={(e) => {
             theaterIDSetState(null);
             return dateSetState(new Date(e.currentTarget.value))
         }
         } />
-        <select disabled={theaterState() == null} class="m-5 border-red-600 border-4 w-[20vw]" onChange={(e) => {
+        <select disabled={theaterState() == null} class="m-5 border-red-600 border-4 w-[20vw] h-[5vh] text-3xl" onChange={(e) => {
             movieSetIdState(null);
             return theaterIDSetState(new Number(e.currentTarget.value))
         }}>
@@ -44,7 +44,7 @@ export default function MovieBuyForm() {
 
             </Show>
         </select>
-        <select disabled={movieState() == null } class="m-5 border-red-600 border-4 w-[20vw]" onChange={(e) => movieSetIdState(new Number(e.currentTarget.value))} >
+        <select disabled={movieState() == null } class="m-5 border-red-600 border-4 w-[20vw]  h-[5vh] text-3xl" onChange={(e) => movieSetIdState(new Number(e.currentTarget.value))} >
             <option disabled selected value={undefined}>Movie</option>
             <Show when={movieState()}
                 fallback={
@@ -56,7 +56,7 @@ export default function MovieBuyForm() {
                 </For>
             </Show>
         </select>
-        <select disabled={movieIdState() == null } class="m-5 border-red-600 border-4 w-[20vw]"  >
+        <select disabled={movieIdState() == null } class="m-5 border-red-600 border-4 w-[20vw]  h-[5vh] text-3xl"  >
             <option disabled selected value={undefined}>Hour</option>
             <Show when={movieIdState()}
                 fallback={
