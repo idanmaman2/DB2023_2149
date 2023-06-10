@@ -83,6 +83,25 @@ export async function getMoviebyID(id : string) : Promise<Movie> {
  let resQ = await client.query(querySTR).toPromise() ; 
  return resQ.data.findMovieById  ; 
 
+}
+
+
+export async function getAvailableMoviesByTheaterAndDate(theaterID:number ,   date : String ){
+  let querySTR : string = `  
+  query{
+		findAllAvailableMoviesByTheaterAndDate(theater : ${theaterID} , date :"${date}"){
+    	name
+      id
+      schedules{
+        time
+        id
+      }
+  	}
+}
+    `
+ let resQ = await client.query(querySTR).toPromise() ; 
+ return resQ.data.findAllAvailableMoviesByTheaterAndDate  ; 
+
 
 
 

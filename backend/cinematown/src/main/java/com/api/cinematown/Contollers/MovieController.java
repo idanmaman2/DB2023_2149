@@ -41,4 +41,11 @@ public class MovieController {
 
     }
 
+
+    @SchemaMapping(typeName = "Query" , value = "findAllAvailableMoviesByTheaterAndDate")
+    public List<Movie> findAllAvailableMoviesByTheaterAndDate(@Argument Long theater , @Argument String date) {
+        return  movieRepository.findAllAvailableMoviesByTheaterAndDate(theater, date);
+
+    }
+
 }

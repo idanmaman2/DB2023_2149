@@ -9,4 +9,6 @@ type Query {
     findAllTheaters:[Theater!]
     findTheaterById(id:Int!):Theater
     findAllAvailableDates:[Schedule!]
+    findAllAvailableTheaterByDate(date : String ):[Theater!]
+    findAllAvailableMoviesByTheaterAndDate(theater : ID! , date : String ): [Movie!]
 }

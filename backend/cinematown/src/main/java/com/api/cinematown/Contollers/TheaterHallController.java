@@ -15,14 +15,5 @@ import java.util.List;
 @CrossOrigin
 @Controller
 public class TheaterHallController {
-    @Autowired
-    private TheaterRepository theaterRepository;
-    @SchemaMapping(typeName ="Query" , value = "findAllTheaters")
-    public List<Theater> findAllTheaters() {
-        return theaterRepository.findAll();
-    }
-    @SchemaMapping(typeName ="Query" , value = "findTheaterById")
-    public Theater findTheaterById(@Argument Long id) {
-        return theaterRepository.findById(id).get();
-    }
+
 }

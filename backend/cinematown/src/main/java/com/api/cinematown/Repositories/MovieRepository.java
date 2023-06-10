@@ -20,6 +20,9 @@ public interface MovieRepository extends JpaRepository<Movie,Long> {
     @Query(value = "SELECT * FROM movie WHERE movie.rating in  ?1 ORDER",nativeQuery = true)
     List<Movie> findMoviesByRating(List<String> rating);
 
+    @Query(value = "SELECT DISTINCT movie.* from movie JOIN schedule ON (schedule.mv_id = movie.id) JOIN theater_hall ON (schedule.theater_hall_id= theater_hall.id) JOIN theater ON (theater.id = theater_hall.Theater_id ) WHERE DATE_FORMAT(schedule.time , \"%Y-%m-%e\") =DATE_FORMAT( ?2 , \"%Y-%m-%e\") and theater.id = ?1 ;",nativeQuery = true)
+    List<Movie> findAllAvailableMoviesByTheaterAndDate(Long theaterID , String date);
+
 
 
 

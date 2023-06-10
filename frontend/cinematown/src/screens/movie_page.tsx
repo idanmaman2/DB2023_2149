@@ -10,15 +10,17 @@ import ScheduleTable from "../componnets/shcedule_table";
 
 export default function MoviesPage() {
     const params = useParams();
-
+    let [twoDState, twoDSetState] = createSignal(1);
+    let [dateState, dateSetState] = createSignal(new Date());
     const [moviesState, moviesStateSet] = createSignal(null)
     console.log(`cool ${params.id}`)
-    const [movie]: ResourceReturn<Movie, unknown> = createResource(() => getMoviebyID(params.id) );
+    const [movie]: ResourceReturn<Movie, unknown> = createResource(() => getMoviebyID(params.id));
     return <Show
         when={movie()}
         fallback={<p>Loading...</p>}>
-        <div>
-            <h1 class="flex justify-center items-center text-8xl font-mono m-5 mb-20">{movie()!.name}</h1>
+        <div class="grid grid-cols-1">
+            
+        <h1 class="flex justify-center items-center text-8xl font-mono m-5 mb-20">{movie()!.name}</h1>
             <div class="flex" >
                 <div class="w-[30vw] h-[50vh] flex items-center justify-center ">
                     <img class="m-5 w-[30vw] h-[50vh] border-black border-[1vw] " src={movie()!.poster_images}></img>
@@ -27,6 +29,7 @@ export default function MoviesPage() {
                     <iframe class="w-[75%] h-[100%]" src={movie()!.trailer}></iframe>
                 </div>
             </div>
+            <div class="h-[10vh] w-[100vw]"></div>
             <div class=" flex" >
                 <div class="w-[30vw] h-[20vh] flex items-start p-[4%]  justify-center ">
                     <div>
@@ -53,18 +56,31 @@ export default function MoviesPage() {
                     <div>
                         <h1 class="m-5 text-5xl font-bold">Description</h1>
                         <div class="m-5">
-                        <p class="text-4xl font-extralight ">{movie()?.description}</p>
+                            <p class="text-4xl font-extralight ">{movie()?.description}</p>
                         </div>
-                       
+
                     </div>
 
                 </div>
             </div>
             <div class="mt-[10vh] ml-[3vw] mr-[3vw]">
-            <h1 class="text-6xl m-5 font-extralight">
-                Buy Tickets
-            </h1>
-            <ScheduleTable schedules={movie()!.schedules}></ScheduleTable>
+                <h1 class="text-6xl m-5 font-extralight">
+                    Buy Tickets to : {movie()?.name}
+                </h1>
+                <div class="flex items-center justify-center">
+                <input class="m-5 border-red-600 border-4 w-[20vw]" type="date" value={dateState().toJSON().slice(0,10)} onChange={(e)=>dateSetState(new Date(e.currentTarget.value))} />
+                <select class="m-5 border-red-600 border-4 w-[20vw]" onChange={(e)=>twoDSetState(Number(e.currentTarget.value))}>
+                    <option value={1}>ALL</option>
+                    <option value={2}>2D</option>
+                    <option value={3}>3D</option>
+                </select>
+
+
+                </div>
+      
+
+                <ScheduleTable schedules={movie()!.schedules} twoD={twoDState()} date={dateState()}></ScheduleTable>
+                
             </div>
         </div>
 

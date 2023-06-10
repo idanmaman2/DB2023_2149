@@ -6,7 +6,7 @@ import { Genre, GenreCard } from "./genre"
 import { Schedule } from "./shecudle"
 export interface Movie {
   name: string
-  id: bigint
+  id: Number
   description: string
   rating: string
   poster_images: string
