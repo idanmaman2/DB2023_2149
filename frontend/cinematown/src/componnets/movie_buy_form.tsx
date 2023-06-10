@@ -26,7 +26,7 @@ export default function MovieBuyForm() {
             return dateSetState(new Date(e.currentTarget.value))
         }
         } />
-        <select class="m-5 border-red-600 border-4 w-[20vw]" onChange={(e) => {
+        <select disabled={theaterState() == null} class="m-5 border-red-600 border-4 w-[20vw]" onChange={(e) => {
             movieSetIdState(null);
             return theaterIDSetState(new Number(e.currentTarget.value))
         }}>
@@ -44,7 +44,7 @@ export default function MovieBuyForm() {
 
             </Show>
         </select>
-        <select class="m-5 border-red-600 border-4 w-[20vw]" onChange={(e) => movieSetIdState(new Number(e.currentTarget.value))} >
+        <select disabled={movieState() == null } class="m-5 border-red-600 border-4 w-[20vw]" onChange={(e) => movieSetIdState(new Number(e.currentTarget.value))} >
             <option disabled selected value={undefined}>Movie</option>
             <Show when={movieState()}
                 fallback={
@@ -56,8 +56,8 @@ export default function MovieBuyForm() {
                 </For>
             </Show>
         </select>
-        <select class="m-5 border-red-600 border-4 w-[20vw]"  >
-            <option disabled selected value={undefined}>Movie</option>
+        <select disabled={movieIdState() == null } class="m-5 border-red-600 border-4 w-[20vw]"  >
+            <option disabled selected value={undefined}>Hour</option>
             <Show when={movieIdState()}
                 fallback={
                     <div></div>

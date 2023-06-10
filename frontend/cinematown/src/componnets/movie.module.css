@@ -29,15 +29,14 @@
 .back {
   background: linear-gradient(#f8da61, #ff5acd);
   z-index: 1;
-  /* Fricking stupid Safari!!!! */
+
   backface-visibility: hidden;
-  transform: rotateY(180.00001deg);
+  transform: rotateY(180deg);
 
 }
 
 .container:hover .card {
-  /* Fricking stupid Safari!!!! */
-  transform: rotateY(180.00001deg);
+  transform: rotateY(180deg);
 }
 
 .container {
