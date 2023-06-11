@@ -17,19 +17,19 @@ export default function MovieBuyForm() {
         return getAvailableMoviesByTheaterAndDate(id.valueOf(), `${dateState().getFullYear()}-${dateState().getMonth() + 1}-${dateState().getDate()}`);
     });
     let [movieIdState, movieSetIdState]: Signal<Number | null> = createSignal(null);
-    let [hourState, hourSetState] : Signal<Number | null> = createSignal( null);
+    let [hourIDState, hourIDSetState] : Signal<Number | null> = createSignal( null);
     let formatDateHHMM = (date: Date) => `${date.getHours().toString().padStart(2,"0")}:${date.getMinutes().toString().padStart(2,"0")}`;
     return <div>
         <input class="m-5 border-red-600 border-4 w-[20vw]  h-[5vh] text-3xl" type="date" value={dateState().toJSON().slice(0, 10)} onChange={(e) => {
             theaterIDSetState(null);
             movieSetIdState(null);
-            hourSetState(null); 
+            hourIDSetState(null); 
             return dateSetState(new Date(e.currentTarget.value))
         }
         } />
         <select value={theaterIDState() == null ? undefined : theaterIDState()!.valueOf()}   id="theater_select"  class="m-5 border-red-600 border-4 w-[20vw] h-[5vh] text-3xl" onChange={(e) => {
             movieSetIdState(null);
-            hourSetState(null);
+            hourIDSetState(null);
             return theaterIDSetState(new Number(e.currentTarget.value))
         }}>
             <option disabled selected value={undefined}>Select : Theater</option>
@@ -42,7 +42,7 @@ export default function MovieBuyForm() {
         </select>
         <select value={movieIdState() == null ? undefined : movieIdState()!.valueOf()}   id="movie_select" disabled={movieState() == null || theaterIDState() == null } class="m-5 border-red-600 border-4 w-[20vw]  h-[5vh] text-3xl" 
         onChange={(e) =>{
-            hourSetState(null); 
+            hourIDSetState(null); 
             return movieSetIdState(new Number(e.currentTarget.value))
         } } >
             <option disabled selected value={undefined}>Select :  Movie</option>
@@ -53,7 +53,7 @@ export default function MovieBuyForm() {
                 </For>
             </Show>
         </select>
-        <select value={hourState() == null ? undefined : hourState()!.valueOf()} id="hour_select" disabled={movieIdState() == null  || theaterIDState() == null} class="m-5 border-red-600 border-4 w-[20vw]  h-[5vh] text-3xl" onChange={(e)=>hourSetState(new Number(e.currentTarget.value))} >
+        <select value={hourIDState() == null ? undefined : hourIDState()!.valueOf()} id="hour_select" disabled={movieIdState() == null  || theaterIDState() == null} class="m-5 border-red-600 border-4 w-[20vw]  h-[5vh] text-3xl" onChange={(e)=>hourIDSetState(new Number(e.currentTarget.value))} >
             <option disabled selected value={undefined}>Select : Hour</option>
             <Show when={movieIdState() && movieState() && theaterState()}>
                 <For each={(movieState() as Movie[]).find((x) => x.id == movieIdState())?.schedules}>{
