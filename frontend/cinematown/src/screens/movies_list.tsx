@@ -29,21 +29,10 @@ export default function MoviesList() {
             }>
             <About></About>
             <div class="w-[100vw] h-[35vh] bg-yellow-600">
-                <h1 class="flex justify-center text-8xl font-bold">Order Tickets</h1>
-                <div class="flex justify-center items-center m-10">
                    <MovieBuyForm></MovieBuyForm>
-
-
-
-                </div>
-                <div class="flex justify-center items-center">
-                    <button class="text-3xl w-[20vw] h-[5vh] bg-blue-500 flex-initial hover:bg-blue-400 text-white font-bold border-b-4 border-blue-700 hover:border-blue-500 rounded">
-                        Place Order
-                    </button>
-                </div>
             </div>
-        
             <MoviesTable movies={movies()}></MoviesTable>
+
             <div class="m-10 flex  justify-center items-center w-full">
             <a href='/old' class=" text-blue-800  font-light text-xl underline ">Watch a list of all the movies that we currently own</a>
 

@@ -10,6 +10,7 @@ import LoginPage from './screens/login_page';
 import SignupPage from './screens/signup_page';
 import MoviesListOld from './screens/movies_list_old';
 import TheaterPage from './screens/theater_page';
+import { SeatPickScreen } from './screens/seat_pick_screen';
 const MoviesList = lazy(() => import("./screens/movies_list"));
 const MoviePage = lazy(() => import("./screens/movie_page"));
 
@@ -22,6 +23,7 @@ const App: Component = () => {
       <Routes>
         <Route path="/movie/:id" component={MoviePage} />
         <Route path="/site/:id" component={TheaterPage} />
+        <Route path="/scheduleseatpick/:id" component={SeatPickScreen} />
         <Route path="/" component={MoviesList} />
         <Route path="/old" component={MoviesListOld} />
         <Route path="/vip" component={VipPage} />

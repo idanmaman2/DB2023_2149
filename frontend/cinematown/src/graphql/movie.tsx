@@ -86,10 +86,11 @@ export async function getMoviebyID(id : string) : Promise<Movie> {
 }
 
 
-export async function getAvailableMoviesByTheaterAndDate(theaterID:number ,   date : String ){
+export async function getAvailableMoviesByTheaterAndDate(theaterID:number ,   date : Date ){
+  let stdate =`${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
   let querySTR : string = `  
   query{
-		findAllAvailableMoviesByTheaterAndDate(theater : ${theaterID} , date :"${date}"){
+		findAllAvailableMoviesByTheaterAndDate(theater : ${theaterID} , date :"${stdate}"){
     	name
       id
       schedules{

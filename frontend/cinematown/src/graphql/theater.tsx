@@ -41,13 +41,12 @@ export async function getTheaterById(id: number): Promise<Theater> {
 }
 
 
-export async function findAllAvailableTheaterByDate(date: String) {
-    console.log("entere buy111");
-    console.log(date);
+export async function findAllAvailableTheaterByDate(date: Date) {
+    let stdate =`${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`; 
     const querySTR = `  
         query
         {
-            findAllAvailableTheaterByDate(date:"${date}"){
+            findAllAvailableTheaterByDate(date:"${stdate}"){
                 id
                 street_name
                 city_name
