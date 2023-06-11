@@ -18,9 +18,9 @@ const App: Component = () => {
   return (
     <div class="grid grid-cols-1" >
 
-
+    
     <NavBar></NavBar>
-      <Routes>
+      <Routes >
         <Route path="/movie/:id" component={MoviePage} />
         <Route path="/site/:id" component={TheaterPage} />
         <Route path="/scheduleseatpick/:id" component={SeatPickScreen} />

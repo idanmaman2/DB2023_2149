@@ -6,7 +6,7 @@ import { Genre, GenreCard } from "./genre"
 import { Schedule } from "./shecudle"
 export interface Movie {
   name: string
-  id: Number
+  id: number
   description: string
   rating: string
   poster_images: string
@@ -17,7 +17,7 @@ export interface Movie {
   schedules : Schedule[]
 }
 export function MovieCard(props: { movie: Movie }) {
-
+  const timeDDMMYYYY = (date: Date )=>`${date.getDate()}.${date.getMonth()}.${date.getFullYear()}`
   const { movie } = props;
   return (
 
@@ -26,7 +26,14 @@ export function MovieCard(props: { movie: Movie }) {
         <div  class={` h-[60vh] xl:w-[20vw]  lg:w-[30vw]  md:w-[40vw] sm:w-[90vw]  ${styles.card}`}>
           <div class={styles.front}>
             <div class="m rounded-lg  bg-mainColor  w-[100%] h-[100%]  border-mainColor border-8 relative">
-              <img src={movie.poster_images} alt="Poster Image" class=" w-[100%] h-[80%] object-fill  group-hover:opacity-75" />
+            <div class="relative w-full h-[80%]" >
+                <div class="absolute w-full h-full">
+                  <img src={movie.poster_images} alt="Poster Image" class="w-full h-full object-fill  " />
+                </div>
+                <div class="absolute w-full h-full flex items-end justify-center text-white ">
+                <p class="text-base font-serif">Next date : {timeDDMMYYYY(props.movie.schedules.map((x)=>new Date(x.time)).reduce((x:Date , y:Date )=>x > y ? y : x))}</p>
+                </div>
+            </div>
               <div class="h-20% w-[100%]">
                 <h3 class="mt-1 text-4xl  text-gray-900">{movie.name}</h3>
                 <div class=" absolute bottom-[-10px] w-[100%]">

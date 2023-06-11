@@ -3,6 +3,7 @@ type Seats {
     columnseat: Int!
     rowseat: Int!
     theaterHall: Theater_Hall!
+    
 
 }
 

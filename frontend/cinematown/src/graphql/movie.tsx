@@ -18,6 +18,10 @@ export default async function  getFindAllMovies() : Promise<Movie[]> {
           name
           id
         }
+        schedules{
+          time
+        }
+
       }
       }
     `

@@ -3,9 +3,9 @@ import { Thetaer_Hall } from "./theater_hall";
 
 
 export interface Seat{
-    id : Number; 
-    columnseat: Number;
-    rowseat: Number;
+    id : number; 
+    columnseat: number;
+    rowseat: number;
     theaterHall: Thetaer_Hall;
 
 
@@ -14,7 +14,7 @@ export interface Seat{
 
 
 export default function SeatCard(seat : Seat){
-    return <div>{seat.id.valueOf()}</div>
+    return <div>{seat.id}</div>
     
 
 

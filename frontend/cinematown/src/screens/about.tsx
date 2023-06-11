@@ -7,8 +7,7 @@ import { onMount, For, JSX } from "solid-js";
 export function About() {
 
     let sections: any = [
-        <div class="hD1 grid justify-items-center h-[80vh] mb-[10vh] w-[100vw] ">
-
+        <div class="hD1 grid justify-items-center h-[90vh] w-[100vw] ">
             <img src={logo} class="w-[15vw] h-[15vh] object-fill mb-10"></img>
             <div class="rounded-lg h-1 w-[30vw] bg-gradient-to-r  from-yellow-300 to-red-600"></div>
             <div class="shadow-2xl hover:shadow-inner bg-red-300 grid justify-items-center m-5">

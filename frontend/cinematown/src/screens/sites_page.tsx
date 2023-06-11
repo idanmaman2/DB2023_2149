@@ -16,7 +16,7 @@ export default function SitesPage(){
         </div>
 
     }>
-        <div class=" grid  lg:grid-cols-3  md:grid-cols-2  sm:grid-cols-1  gap-10">
+        <div class=" grid  lg:grid-cols-3  md:grid-cols-2  sm:grid-cols-1  gap-10  pattern-dots pattern-green-200 pattern-bg-white pattern-opacity-100 pattern-size-24">
         <For each={theaters()} >{
         (theater:any,i:Accessor<number>)=><div class=" lg:w-[29vw] md:[49vw] sm:[99vw] h-[30vh] m-10">
                 <TheaterCard theater={theater}></TheaterCard>

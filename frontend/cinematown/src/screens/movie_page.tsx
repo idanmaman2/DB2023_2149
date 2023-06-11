@@ -22,10 +22,10 @@ export default function MoviesPage() {
             
         <h1 class="flex justify-center items-center text-8xl font-mono m-5 mb-20">{movie()!.name}</h1>
             <div class="flex" >
-                <div class="w-[30vw] h-[50vh] flex items-center justify-center ">
-                    <img class="m-5 w-[30vw] h-[50vh] border-black border-[1vw] " src={movie()!.poster_images}></img>
+                <div class="w-[30vw] h-[55vh] flex items-center justify-center ">
+                    <img class="m-5 w-[30vw] h-[55vh] border-black border-[1vw] " src={movie()!.poster_images}></img>
                 </div>
-                <div class="w-[70vw] h-[50vh]   flex items-center justify-center">
+                <div class="w-[70vw] h-[55vh]   flex items-center justify-center">
                     <iframe class="w-[75%] h-[100%]" src={movie()!.trailer}></iframe>
                 </div>
             </div>

@@ -12,12 +12,4 @@ export default async  function getAvailableScheduleBYMoviesAndTheaterAndDate(mov
       `
    let resQ = await client.query(querySTR).toPromise() ; 
    return resQ.data.findAllAvailableScheduleBYMoviesAndTheaterAndDate  ; 
-  
-  
-
-
-
-
-
-    
 }

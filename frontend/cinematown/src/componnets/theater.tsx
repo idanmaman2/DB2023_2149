@@ -4,7 +4,7 @@ export interface Theater {
     city_name: string;
     region_name: string
     street_name: string
-    id: Number
+    id: number
     lat: number
     lon: number
 }
