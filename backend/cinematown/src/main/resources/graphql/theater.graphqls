@@ -5,6 +5,7 @@ type Theater {
     lat : Float!
     lon :Float!
     id: ID!
+    #theaterHalls : [Theater_Hall!]
 
 }
 

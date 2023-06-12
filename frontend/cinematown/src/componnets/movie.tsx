@@ -30,9 +30,12 @@ export function MovieCard(props: { movie: Movie }) {
                 <div class="absolute w-full h-full">
                   <img src={movie.poster_images} alt="Poster Image" class="w-full h-full object-fill  " />
                 </div>
+                <Show when={props.movie.schedules}>
                 <div class="absolute w-full h-full flex items-end justify-center text-white ">
-                <p class="text-base font-serif">Next date : {timeDDMMYYYY(props.movie.schedules.map((x)=>new Date(x.time)).reduce((x:Date , y:Date )=>x > y ? y : x))}</p>
+                <p class="text-base font-serif bg-mainColor">Next date : {timeDDMMYYYY(props.movie.schedules.map((x)=>new Date(x.time)).reduce((x:Date , y:Date )=>x > y ? y : x))}</p>
                 </div>
+                </Show>
+           
             </div>
               <div class="h-20% w-[100%]">
                 <h3 class="mt-1 text-4xl  text-gray-900">{movie.name}</h3>

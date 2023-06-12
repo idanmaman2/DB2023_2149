@@ -13,3 +13,27 @@ export default async  function getAvailableScheduleBYMoviesAndTheaterAndDate(mov
    let resQ = await client.query(querySTR).toPromise() ; 
    return resQ.data.findAllAvailableScheduleBYMoviesAndTheaterAndDate  ; 
 }
+export  async  function getScheduleById(schedID : number ){
+  let querySTR : string = `  
+  query{
+  findScheduleById(id :${schedID}){
+    time
+    theater_hall{
+      sizeRow
+      sizeCol
+      id
+    	theater{
+        street_name
+        city_name
+      }
+    }
+    movie{
+      name
+    }
+    
+  }
+}
+    `
+ let resQ = await client.query(querySTR).toPromise() ; 
+ return resQ.data.findScheduleById  ; 
+}

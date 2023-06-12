@@ -23,7 +23,8 @@ public class ScheduleController {
     public List<Schedule> findAllAvailableScheduleBYMoviesAndTheaterAndDate(@Argument Long movie , @Argument Long theater , @Argument String date ) {
         return scheduleRepository.findAllAvailableScheduleBYMoviesAndTheaterAndDate(movie , theater , date );
     }
-
-
-
+    @SchemaMapping(typeName ="Query" , value = "findScheduleById")
+    public Schedule findScheduleById(@Argument Long id) {
+        return scheduleRepository.findById(id).get();
+    }
 }

@@ -23,4 +23,15 @@ public class SeatsController {
     public List<Seats> findAllSeatsBySchedule(@Argument Long  id) {
         return seatsRepository.getAllSeatsBySchedule(id);
     }
+
+
+    @SchemaMapping(typeName ="Query" , value = "findAllFreeSeatsBySchedule")
+    public List<Seats> findAllFreeSeatsBySchedule(@Argument Long  id) {
+        return seatsRepository.getAllFreeSeatsBySchedule(id);
+    }
+
+    @SchemaMapping(typeName ="Query" , value = "findAllBrokenSeatsByTheaterHall")
+    public List<Seats> findAllBrokenSeatsByTheaterHall(@Argument Long  id) {
+        return seatsRepository.getAllBrokenSeatsByTheaterHall(id);
+    }
 }

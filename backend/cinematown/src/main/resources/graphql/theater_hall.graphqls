@@ -2,5 +2,8 @@ type Theater_Hall {
     theater: Theater!
     id: ID!
     schedules:[Schedule!]
+    sizeRow : Int!
+    sizeCol : Int!
+    #seats:[Seats!]
 }
 

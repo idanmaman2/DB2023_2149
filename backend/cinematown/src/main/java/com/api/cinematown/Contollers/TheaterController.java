@@ -25,8 +25,6 @@ public class TheaterController {
     public Theater findTheaterById(@Argument Long id) {
         return theaterRepository.findById(id).get();
     }
-
-
     @SchemaMapping(typeName ="Query" , value = "findAllAvailableTheaterByDate")
     public List<Theater> findAllAvailableTheaterByDates(@Argument String date) {
         return theaterRepository.findByDate(date);

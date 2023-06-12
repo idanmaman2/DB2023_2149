@@ -29,7 +29,7 @@ export default function MoviesList() {
 
             </div>
 
-            <div class="m-0 w-[100vw] h-[45vh] pattern-wavy pattern-blue-600 pattern-bg-blue-400 pattern-opacity-100 pattern-size-180">
+            <div class="m-0 w-[100vw] h-[45vh] bg-blue-300">
                 <MovieBuyForm></MovieBuyForm>
             </div>
             <MoviesTable movies={movies()}></MoviesTable>

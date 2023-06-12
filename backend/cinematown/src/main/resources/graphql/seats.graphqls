@@ -2,8 +2,11 @@ type Seats {
     id: ID!
     columnseat: Int!
     rowseat: Int!
-    theaterHall: Theater_Hall!
-    
+    #virtual property ...
+    free : Boolean!
+
+    #theaterHall: Theater_Hall!
+
 
 }
 

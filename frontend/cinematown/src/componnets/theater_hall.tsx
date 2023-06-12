@@ -5,4 +5,6 @@ export interface Thetaer_Hall{
     id : number 
     theater : Theater
     schedules : Schedule[]
+    sizeRow : number 
+    sizeCol : number 
 }
