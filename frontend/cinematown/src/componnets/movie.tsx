@@ -25,20 +25,20 @@ export function MovieCard(props: { movie: Movie }) {
       <div class={styles.container}>
         <div  class={` h-[60vh] xl:w-[20vw]  lg:w-[30vw]  md:w-[40vw] sm:w-[90vw]  ${styles.card}`}>
           <div class={styles.front}>
-            <div class="m rounded-lg  bg-mainColor  w-[100%] h-[100%]  border-mainColor border-8 relative">
+            <div class="m rounded-lg  bg-blue-500  w-[100%] h-[100%]  border-blue-500 border-8 relative">
             <div class="relative w-full h-[80%]" >
                 <div class="absolute w-full h-full">
                   <img src={movie.poster_images} alt="Poster Image" class="w-full h-full object-fill  " />
                 </div>
                 <Show when={props.movie.schedules}>
                 <div class="absolute w-full h-full flex items-end justify-center text-white ">
-                <p class="text-base font-serif bg-mainColor">Next date : {timeDDMMYYYY(props.movie.schedules.map((x)=>new Date(x.time)).reduce((x:Date , y:Date )=>x > y ? y : x))}</p>
+                <p class="text-base font-serif bg-blue-500">Next date : {timeDDMMYYYY(props.movie.schedules.map((x)=>new Date(x.time)).reduce((x:Date , y:Date )=>x > y ? y : x))}</p>
                 </div>
                 </Show>
            
             </div>
               <div class="h-20% w-[100%]">
-                <h3 class="mt-1 text-4xl  text-gray-900">{movie.name}</h3>
+                <h3 class="mt-1 text-3xl font-semibold  text-gray-900">{movie.name}</h3>
                 <div class=" absolute bottom-[-10px] w-[100%]">
                   <div class="grid grid-cols-3  gap-y-0 gap-x-5 w-[100%]">
                     <For each={movie.genres.slice(0,6)}>{

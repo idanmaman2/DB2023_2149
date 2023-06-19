@@ -1,5 +1,8 @@
 {
   "devDependencies": {
     "tailwindcss-bg-patterns": "^0.2.0"
+  },
+  "dependencies": {
+    "gsap": "^3.12.1"
   }
 }

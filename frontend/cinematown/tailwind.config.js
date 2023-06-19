@@ -24,6 +24,7 @@ module.exports = {
         orange:colors.orange ,
         red:colors.red ,
         blue:colors.blue ,
+        movie_color : "#36045e"
       },
       patterns: {
         opacities: {

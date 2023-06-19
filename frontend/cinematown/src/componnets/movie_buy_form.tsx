@@ -51,7 +51,7 @@ export default function MovieBuyForm() {
                         </svg>
                     </div>
                     <select value={theaterIDState() ?? undefined } id="theater_select" 
-                    class="w-[80%] h-full bg-transparent " onChange={(e) => {
+                    class="w-[80%] h-full bg-transparent custom-select " onChange={(e) => {
                         movieSetIdState(null);
                         hourIDSetState(null);
                         theaterIDSetState(Number(e.currentTarget.value))
@@ -76,7 +76,7 @@ export default function MovieBuyForm() {
                     </div>
 
                     <select value={movieIdState()?? undefined } id="movie_select" disabled={movieState() == null || theaterIDState() == null} 
-                    class="w-[80%] h-full bg-transparent"
+                    class="w-[80%] h-full bg-transparent custom-select"
                         onChange={(e) => {
                             hourIDSetState(null);
                             movieSetIdState(Number(e.currentTarget.value))
@@ -97,7 +97,7 @@ export default function MovieBuyForm() {
                         </svg>
                     </div>
                     <select value={hourIDState() ?? undefined } id="hour_select" disabled={movieIdState() == null || theaterIDState() == null} 
-                    class="w-[80%] h-full bg-transparent" onChange={(e) => hourIDSetState(Number(e.currentTarget.value))} >
+                    class="w-[80%] h-full bg-transparent custom-select" onChange={(e) => hourIDSetState(Number(e.currentTarget.value))} >
                         <option disabled selected value={undefined}>Select : Hour</option>
                         <Show when={movieIdState() && movieState() && theaterState()}>
                             <For each={hoursState()}>{

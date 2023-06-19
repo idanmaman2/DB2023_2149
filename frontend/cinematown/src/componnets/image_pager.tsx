@@ -17,11 +17,11 @@ export default function ImagePager(props: { movies: Movie[] }) {
 
 
     return <div class="flex items-center justify-center w-full h-full gap-20">
-        <img class="IMT w-[20vw] h-[38vh] opacity-80 -translate-y-[-2vh] z-0 -rotate-1 -skew-y-4" src={props.movies![movieShowIndexState() ].poster_images}></img>
-        <img class="IMT  w-[20vw] h-[38vh] opacity-80  -translate-y-[-2vh]  z-0 -rotate-2 -skew-y-12" src={props.movies![getCircularMovieIndex(movieShowIndexState()+1)].poster_images}></img>
-        <img class="IMT w-[20vw] h-[40vh] opacity-100   z-40" src={props.movies![getCircularMovieIndex(movieShowIndexState() + 2)].poster_images}></img>
-        <img class="IMT w-[20vw] h-[38vh] opacity-80  -translate-y-[-2vh]  z-0 rotate-2 skew-y-12" src={props.movies![getCircularMovieIndex(movieShowIndexState() + 3)].poster_images}></img>
-        <img class="IMT w-[20vw] h-[38vh] opacity-80  -translate-y-[-2vh]  z-0 rotate-1 skew-y-4 " src={props.movies![getCircularMovieIndex(movieShowIndexState() + 4)].poster_images}></img>
+        <img class="IMT w-[20vw] h-[38vh] -translate-y-[-2vh] z-0 -rotate-1 -skew-y-4" src={props.movies![movieShowIndexState() ].poster_images}></img>
+        <img class="IMT  w-[20vw] h-[38vh]   -translate-y-[-2vh]  z-0 -rotate-2 -skew-y-12" src={props.movies![getCircularMovieIndex(movieShowIndexState()+1)].poster_images}></img>
+        <img class="IMT w-[20vw] h-[40vh]   z-40" src={props.movies![getCircularMovieIndex(movieShowIndexState() + 2)].poster_images}></img>
+        <img class="IMT w-[20vw] h-[38vh]   -translate-y-[-2vh]  z-0 rotate-2 skew-y-12" src={props.movies![getCircularMovieIndex(movieShowIndexState() + 3)].poster_images}></img>
+        <img class="IMT w-[20vw] h-[38vh]   -translate-y-[-2vh]  z-0 rotate-1 skew-y-4 " src={props.movies![getCircularMovieIndex(movieShowIndexState() + 4)].poster_images}></img>
     
     
     

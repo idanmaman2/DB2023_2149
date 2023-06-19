@@ -10,13 +10,28 @@
         ; for all the selection menu dont show the disabled options _ global setting 
       select option:disabled {
         display: none;
-      }      
+      }    
+      .custom-select {
+        display: inline-block;
+        padding: 4px 3px 3px 5px;
+        margin: 0;
+        font: inherit;
+        outline:none; /* remove focus ring from Webkit */
+        line-height: 1.2;
+
+
+        -webkit-appearance:none; /* remove the strong OSX influence from Webkit */
+
+        -webkit-border-radius: 6px;
+        -moz-border-radius: 6px;
+        border-radius: 6px;
+    }
+
     </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-
     <script src="/src/index.tsx" type="module"></script>
   </body>
 </html>

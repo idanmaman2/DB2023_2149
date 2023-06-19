@@ -3,16 +3,17 @@ import random
 import datetime
 SHCEDULES = 3000 
 THISWEEK = 300 
-MOVIESNUMBER = 50 
+MOVIESNUMBER = 30
 mycursor.execute("SELECT id FROM `movie`;")
 movies =list(map(lambda mv : mv[0] ,mycursor.fetchall()))
 mycursor.execute("SELECT id FROM `theater_hall`;")
 theaters =list(map(lambda x : x[0],mycursor.fetchall()))
 mycursor.execute("""SELECT id FROM `movie` WHERE movie.reales_date > "2005-1-1";""")
 movies2015 = random.sample(list(map(lambda mv : mv[0] ,mycursor.fetchall())) , k = MOVIESNUMBER)
+print(*movies2015,sep="\n")
 for i in range(THISWEEK):   
     try : 
-        mycursor.execute("""INSERT INTO `schedule`(`id`, `mv_id`, `theater_hall_id`, `time`, `3D`) 
+        mycursor.execute("""INSERT INTO `schedule`(`id`, `mv_id`, `theater_hall_id`, `time`, `is_3D`) 
                         VALUES (NULL,%s,%s,%s,%s)""",
                         ( random.choice(movies2015) , 
                          random.choice(theaters) , 

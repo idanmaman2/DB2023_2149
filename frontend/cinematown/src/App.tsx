@@ -11,6 +11,8 @@ import SignupPage from './screens/signup_page';
 import MoviesListOld from './screens/movies_list_old';
 import TheaterPage from './screens/theater_page';
 import { SeatPickScreen } from './screens/seat_pick_screen';
+import FinalParchause from './screens/final_parchause';
+import Error404 from './screens/error';
 const MoviesList = lazy(() => import("./screens/movies_list"));
 const MoviePage = lazy(() => import("./screens/movie_page"));
 
@@ -24,13 +26,14 @@ const App: Component = () => {
         <Route path="/movie/:id" component={MoviePage} />
         <Route path="/site/:id" component={TheaterPage} />
         <Route path="/scheduleseatpick/:id" component={SeatPickScreen} />
+        <Route path="/scheduleseatpick/:id/seat/:id" component={FinalParchause} />
         <Route path="/" component={MoviesList} />
         <Route path="/old" component={MoviesListOld} />
         <Route path="/vip" component={VipPage} />
         <Route path="/sites" component={SitesPage} />
         <Route path="/login" component={LoginPage} />
         <Route path="/signup" component={SignupPage} />
-
+        <Route path="**" component={Error404}></Route>
       </Routes>
 
 <Footer></Footer>
