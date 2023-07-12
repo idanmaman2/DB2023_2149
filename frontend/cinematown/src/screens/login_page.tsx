@@ -40,6 +40,11 @@ export default function LoginPage() {
             onClick={ ()=> window.location.href = "/" + (searchParams["redirect"]  ?? "" ) }
             class="text-3xl w-[20vw] h-[5vh] bg-blue-500 flex-initial hover:bg-blue-400 text-white font-bold border-b-4 border-blue-700 hover:border-blue-500 rounded">Log In</button>
             </div>
+
+            
+            <a href={`/signup?redirect=${searchParams["redirect"]}`} class="  text-xl underline flex justify-center text-blue-800 font-light">Create an account </a>
+
+
         </div>
     </div>
 }
