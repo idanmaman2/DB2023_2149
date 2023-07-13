@@ -100,7 +100,7 @@ export default function MovieBuyForm() {
                     class="w-[80%] h-full bg-transparent custom-select" onChange={(e) => hourIDSetState(Number(e.currentTarget.value))} >
                         <option disabled selected value={undefined}>Select : Hour</option>
                         <Show when={movieIdState() && movieState() && theaterState()}>
-                            <For each={hoursState()}>{
+                            <For each={hoursState() }>{
                                 (sched: Schedule, index) => <option value={sched.id}>{formatDateHHMM(new Date(sched.time))}</option>
                             }
                             </For>

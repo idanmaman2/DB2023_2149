@@ -54,7 +54,7 @@ export default function SignupPage(){
             <div class="-translate-x-[5vw] m-5  h-[5vh] flex justify-center">
             <p class="m-5 font-light lg:text-2xl sm:text-sm  w-[10vw] ml-[4vw] text-blue-500">Email: </p>
             <input 
-            type="input"
+            type="email" 
             onChange={ (e)=> {
                 emailSetState(e.currentTarget.value )
                 console.log(emailState())

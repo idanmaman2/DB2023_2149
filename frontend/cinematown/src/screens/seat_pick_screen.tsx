@@ -102,7 +102,9 @@ export function SeatPickScreen() {
                                             rotation: 360,
                                             scale: 1.1,
                                             onComplete: () => {
-                                                window.location.href += `/seat/${seat.seat.id}`
+                                                let pickupId = Number(params.id) ; 
+                                                let seatId = seat.seat.id ; 
+                                                window.location.href = `/login?redirect=scheduleseatpick/${pickupId}/seat/${seatId}`
                                             }
                                         })
 

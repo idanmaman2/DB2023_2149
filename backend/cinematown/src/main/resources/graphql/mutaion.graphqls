@@ -1,0 +1,3 @@
+type Mutation {
+    buyMovieTicket(paying_method: String, costumer_id: String, seat_id: ID!, sched_id : ID! ): String!
+}

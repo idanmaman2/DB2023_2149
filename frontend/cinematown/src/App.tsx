@@ -26,7 +26,7 @@ const App: Component = () => {
         <Route path="/movie/:id" component={MoviePage} />
         <Route path="/site/:id" component={TheaterPage} />
         <Route path="/scheduleseatpick/:id" component={SeatPickScreen} />
-        <Route path="/scheduleseatpick/:id/seat/:id" component={FinalParchause} />
+        <Route path="/scheduleseatpick/:id1/seat/:id2" component={FinalParchause} />
         <Route path="/" component={MoviesList} />
         <Route path="/old" component={MoviesListOld} />
         <Route path="/vip" component={VipPage} />

@@ -11,9 +11,10 @@ with open("../data/jobs.json") as file :
     jobs = json.load(file)['jobs']
     mycursor.execute("SELECT * FROM `maintnance_workers`")
     workers = list(map(lambda x :MaintenaceWorkers(*x)  , mycursor.fetchall()))
-    chosen_ones = sample(workers , JOBS_NUM)
+    chosen_ones = sample(workers , JOBS_NUM // 10 ) *  10 
     mycursor.execute("SELECT theater_id,id FROM `theater_hall`")
     halls = list(map(lambda x : TheaterHall(*x), mycursor.fetchall()))
+    print(halls) 
     jobs = [  MaintenanceJob(
                              None , 
                              worker.id, 

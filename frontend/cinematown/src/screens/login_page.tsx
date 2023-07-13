@@ -38,7 +38,7 @@ export default function LoginPage() {
             <div class="m-5 flex justify-center">
             <button 
             onClick={ ()=> window.location.href = "/" + (searchParams["redirect"]  ?? "" ) }
-            class="text-3xl w-[20vw] h-[5vh] bg-blue-500 flex-initial hover:bg-blue-400 text-white font-bold border-b-4 border-blue-700 hover:border-blue-500 rounded">Log In</button>
+            class="text-3xl w-[20.5vw] h-[5vh] bg-blue-500 flex-initial hover:bg-blue-400 text-white font-bold border-b-4 border-blue-700 hover:border-blue-500 rounded -translate-x-7">Log In</button>
             </div>
 
             

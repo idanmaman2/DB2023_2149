@@ -4,7 +4,7 @@ from objects.sechedule import Schedule
 from objects.seat import Seat
 from objects.costumer import Costumer
 from objects.transaction import Transaction 
-mycursor.execute("SELECT   `mv_id`, `theater_hall_id`, `time`, `3D`,`id` FROM `schedule` where time > Now();")
+mycursor.execute("SELECT   `mv_id`, `theater_hall_id`, `time`, `is_3D`,`id` FROM `schedule` where time > Now();")
 scheds_list  = list(map (lambda sc : Schedule(*sc), mycursor.fetchall()) )
 mycursor.execute("SELECT `first_name`, `last_name`, `email`, `password`, `id` FROM `registered_costumers`")
 costumers = list(map(lambda cs : Costumer(*cs), mycursor.fetchall()))

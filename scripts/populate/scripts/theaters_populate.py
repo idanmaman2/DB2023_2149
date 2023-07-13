@@ -26,7 +26,7 @@ def getTile(name):
         return zoom , resX , resY 
     res = requests.post(url=f"https://www.openstreetmap.org/geocoder/search_osm_nominatim?query={name.replace(' ','+')}" , 
              headers={
-                 "cookie": "_osm_session=99d33370fe66d5ebb82cc1c4fae491f3; _osm_totp_token=869384; _pk_ref.1.cf09=%5B%22%22%2C%22%22%2C1685978987%2C%22https%3A%2F%2Fwww.google.com%2F%22%5D; _pk_id.1.cf09=b3a1c13386aaba73.1685978987.; _pk_ses.1.cf09=1; _osm_location=34.9882|32.7641|16|M"
+                 "cookie": "_osm_session=139fe2e32f9edcfd65bd8e1023f2f2ad; _osm_totp_token=206630; _pk_ref.1.cf09=%5B%22%22%2C%22%22%2C1689201226%2C%22https%3A%2F%2Fwww.google.com%2F%22%5D; _pk_id.1.cf09=b3a1c13386aaba73.1685978987.; _pk_ses.1.cf09=1; _osm_location=34.88411|32.17741|19|M"
                 ,"origin":"https://www.openstreetmap.org" ,
                  "x-requested-with" :"XMLHttpRequest",
              } , 
@@ -35,9 +35,10 @@ def getTile(name):
                    "minlat":"32.75699962691665",
                    "maxlon":"34.993000030517585",
                    "maxlat":"32.771182119706424",
-                   "authenticity_token":"T67qAGHx_K1jxQbV6adCqfOuo-jvTZxAeR4EH7-5JzTSI8MRQb2g8-Qia0w2EV8_sC71x3Z0HYsoOS3Q-BF1EQ"}
+                   "authenticity_token":"0PbhU876HukbxTgfTvHcKMdif99XaIEncV-e68IU6kcsywT-jMWlQ9TJkQmLS5Tn47-9EFhh8Bvg9fwgsK4hfA"}
              )
     xml = res.text
+    print(xml)
     b = BeautifulSoup(xml, "html.parser")
     return b.ul.li.a["data-lat"] ,b.ul.li.a["data-lon"] 
 
@@ -50,10 +51,11 @@ for city in cities :
     st= Street(street_json["street_name"],street_json["region_name"],street_json["city_name"])
     th = Theater(st , None)
     try : 
-        mycursor.execute("""INSERT INTO `theater`( `street_name`, `city_name`, `region_name`, `id` , `lat` , `lon`) 
+        mycursor.execute("""INSERT INTO `theater` ( `street_name`, `city_name`, `region_name`, `id` , `lat` , `lon`) 
                          VALUES (%s,%s,%s,%s,%s,%s)""",
                          tuple(th) + getTile(th.street.city + " " + th.street.name) )
-    except : 
-        print("FAILED TO INSERT ",st)
+    except Exception as e  : 
+        print("FAILED TO INSERT ",st ,e )
 
 mydb.commit()
+print("commited")

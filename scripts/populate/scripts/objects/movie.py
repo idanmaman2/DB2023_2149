@@ -6,7 +6,7 @@ class Movie:
     class Rating(Enum): 
         PG = "PG" 
         PG_13 = "PG-13"
-        R ="R"
+        #R ="R"
         G= "G"
     name : str 
     rating : Rating 
